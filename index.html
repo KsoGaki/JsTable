@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+    </head>
+    <body>
+        <style>
+            img {
+                width: 200px;
+                height: 200px;
+                margin: 20px;
+            }
+        </style>
+        <div id="draw"></div>
+        <input type="button" value="Delete" id='button'>
+        <input type="button" value="Temp" id='button2'>
+        <input type="button" value="Temp2" id='button3'>
+        <script>
+            var tabImg = ['https://img.hebus.com/hebus_2013/04/14/preview/1365934166_99217.jpg','https://s-media-cache-ak0.pinimg.com/564x/67/99/76/6799766b5f969a5d3b7aefcb547fb49f.jpg','https://s-media-cache-ak0.pinimg.com/564x/80/83/8a/80838a5b5c12aef48678ab8b0266a3e4.jpg','https://i0.wp.com/bounthavy.com/wordpress/wp-content/uploads/2014/12/grand-arcanum.jpg']
+            function Delete() {
+                tabImg.length -= 1;
+                document.getElementById('draw').innerHTML = '';
+                for(i=0; i < tabImg.length; i++) {
+                    document.getElementById('draw').innerHTML += '<img src="' + tabImg[i] + '">';
+                }
+            }
+            function Temp() {
+                var temp = prompt('temperature');
+                if(temp >= 3) {
+                    document.getElementById('draw').innerHTML = '<img src="' + tabImg[2] + '">';
+                }
+                else if(temp >= -1 && temp <= 2) {
+                    document.getElementById('draw').innerHTML = '<img src="' + tabImg[1] + '">';
+                }
+                else if(temp <= -2) {
+                    document.getElementById('draw').innerHTML = '<img src="' + tabImg[0] + '">';
+                }
+                else {
+                    document.getElementById('draw').innerHTML = '<img src="' + tabImg[3] + '">';
+                }
+            }
+            for(i=0; i < tabImg.length; i++) {
+                document.getElementById('draw').innerHTML += '<img src="' + tabImg[i] + '">';
+            }
+            function Temp2() {
+                document.getElementById('draw').innerHTML = '';
+                var n = 0;
+                var tabTemp = [];
+                var temp2 = 0;
+                while (temp2 <= 0 || temp2 > 0) {
+                    temp2 = prompt('temperature');
+                    tabTemp[n] = temp2;
+                    n++;
+                }
+                document.getElementById('draw').innerHTML += '<p> premiere valeur :' + tabTemp[0] + '</p>';
+                document.getElementById('draw').innerHTML += '<p> derniere valeur :' + tabTemp[tabTemp.length - 1] + '</p>';
+                document.getElementById('draw').innerHTML += '<p> taille tableau :' + tabTemp.length + '</p>';
+                document.getElementById('draw').innerHTML += '<p> taille tableau :' + tabTemp.length + '</p>';
+                document.getElementById('draw').innerHTML += "<p> string tableau :" + tabTemp.join("\n") + "</p>";
+                document.getElementById('draw').innerHTML += '<p> string tableau :' + tabTemp.join("\n").substring(2,6) + '</p>';
+            }
+            document.getElementById('button').onclick = Delete;
+            document.getElementById('button2').onclick = Temp;
+            document.getElementById('button3').onclick = Temp2;
+        </script>
+    </body>
+</html>
